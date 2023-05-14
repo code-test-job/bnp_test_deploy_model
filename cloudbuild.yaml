@@ -1,0 +1,17 @@
+steps:
+- id: 'deploy_airflow'
+  name: 'gcr.io/cloud-builders/gcloud' #https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gsutil
+  args:
+    - 'storage'
+    - 'cp'
+    - '-R'
+    - './airflow'
+    - '$_GCS_BUCKET_AIRFLOW'
+
+substitutions:
+  _LOCATION: 'us-east1'
+  _GCS_BUCKET_AIRFLOW: 'us-east1-code-jobs-c988fe00-bucket'
+timeout: 86400s
+options:
+  logging: CLOUD_LOGGING_ONLY
+  dynamic_substitutions: true
