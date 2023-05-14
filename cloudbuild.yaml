@@ -5,7 +5,7 @@ steps:
     - 'storage'
     - 'cp'
     - '-R'
-    - './airflow'
+    - './airflow/dags'
     - '$_GCS_BUCKET_AIRFLOW'
 
 substitutions:
