@@ -19,34 +19,28 @@ Le push vers la branche déclenche l'exécution des instructions dans cloudbuild
   <img src="img/cloud_build.png">
 </div>
 
-Tout est vert, c'est-à-dire, toutes les instructions ont été exécuté avec succès. Le deploy consiste en copier la dag dans le Cloud Storage dont sera importé pour le Composer. Le Airflow va starter la dag comme on peut voir ci-dessous:
+Tout est vert, c'est-à-dire, toutes les instructions ont été exécuté avec succès. Le deploy consiste à copier la dag dans le Cloud Storage qui sera importé pour le Composer. Le Airflow va starter la dag comme on peut voir ci-dessous:
 
-
-
-Le flow montre qui on aura upload d'un modèle, ensuite la création d'un endpoint et finalement l'association des deux, c'est-à-dire le deploy. 
-
-Dans le Vertex AI cette association est claire
-
-Modèle:
 
 <div align="center">
-  <img src="img/model.png">
+  <img src="img/dag.png">
 </div>
 
-Endpoint:
+Le flow montre qu'on aura l'upload d'un modèle, ensuite la création d'un endpoint et finalement l'association des deux, c'est-à-dire, le deploy du modèle. 
 
-<div align="center">
-  <img src="img/endpoint.png">
-</div>
-
-Model associé au Endpoint:
+Dans le Vertex AI cette association est claire:
 
 <div align="center">
   <img src="img/deployed_model.png">
 </div>
 
+On peut faire multiples rêquetes en même temps:
 
+<div align="center">
+  <img src="img/requete.png">
+</div>
 
+Enfin, nous finissions pour avoir un modèle deployé. Cet abordage est bon parce qu'on peut encore choisir les GPU, machine type, accelerators, etc, tous ce dont on a besoin pour les modèles complèxes de Machine Learning.
 
 
 <h1>Structure des dossiers</h1>
@@ -60,7 +54,7 @@ Model associé au Endpoint:
 
 <h2>Dossiers|Packages</h2>
 
-- `app`: APP pour l'équipe A;
+- `airflow`: Airflow Dags;
 - `img`: Images pour le ReadME.md;
 - `tests`: Package avec les fonctions de test;
 
@@ -76,6 +70,7 @@ Model associé au Endpoint:
 
 - [x] Source Repository 
 - [x] Cloud Build
+- [x] Cloud Storage
 - [x] Artifact Registry
 - [x] Vertex AI - Model Registry
 - [x] Vertex AI - Online Prediction (Endpoint)
