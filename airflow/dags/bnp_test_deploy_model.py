@@ -40,7 +40,8 @@ description_endpoint = 'endpoint'
 display_name_deploy = f'deployed_{model_name}'                                             
 machine_type = 'n1-standard-2'                                                              
 min_replica_count = 1                                                                       
-max_replica_count = 1                                                                       
+max_replica_count = 1    
+container_port = 5000                                                                   
 
 #######################################################################
 # Finish Parameters Global
@@ -75,7 +76,12 @@ with DAG(dag_name,
             'container_spec': {
                 'image_uri': image_uri,
                 'predict_route': predict_route,
-                'health_route': health_route
+                'health_route': health_route,
+                'ports': [
+                    {
+                        "containerPort": container_port
+                    }
+                ]
             },
         } 
     )
